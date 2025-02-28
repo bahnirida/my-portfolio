@@ -4,8 +4,8 @@ import "./devsteps.css";
 
 function DevSteps() {
     return (
-        <div className={"my-5"}>
-            <div className={"text-center font-bold text-4xl  "}>How I work ?</div>
+        <div className={"my-5 px-20 sm:px-30"}>
+            <div className={"container font-bold text-4xl  "}>How do I work ?</div>
             <div className={"flex flex-row justify-around mt-20"}>
                 <div className={"w-1/4 flex flex-col justify-center items-center"}>
                     <div className={"w-20 h-20 bg-amber-500 hover:animate-spin border-ft"}></div>

@@ -32,11 +32,11 @@ function HeroSection() {
                     </div>
                 </div>
             </div>
-            <div className={"flex justify-around mt-10"}>
-                <Image src={"/assets/images/area-icons/automation.png"} width={"50"} height={"50"} alt={"ff"}></Image>
-                <Image src={"/assets/images/area-icons/coding.png"} width={"50"} height={"50"} alt={"ff"}></Image>
-                <Image src={"/assets/images/area-icons/mobile-development.png"} width={"50"} height={"30"} alt={"ff"}></Image>
-            </div>
+            {/*<div className={"flex justify-around mt-10"}>*/}
+            {/*    <Image src={"/assets/images/area-icons/automation.png"} width={"50"} height={"50"} alt={"ff"}></Image>*/}
+            {/*    <Image src={"/assets/images/area-icons/coding.png"} width={"50"} height={"50"} alt={"ff"}></Image>*/}
+            {/*    <Image src={"/assets/images/area-icons/mobile-development.png"} width={"50"} height={"30"} alt={"ff"}></Image>*/}
+            {/*</div>*/}
         </div>
     );
 }
