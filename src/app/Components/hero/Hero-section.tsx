@@ -3,7 +3,7 @@ import Image from "next/image";
 import './hero.css';
 function HeroSection() {
     return (
-        <div className={"bg-white h-screen "}>
+        <div className={"bg-white"}>
             <div className={"flex flex-row "}>
                 <div className={"lg:basis-1/2 w-100 ml-3"}>
                     <div className={"py-12 container mx-12"}>
