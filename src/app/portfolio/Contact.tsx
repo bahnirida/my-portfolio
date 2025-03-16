@@ -10,7 +10,7 @@ function Contact() {
                 <div className={"w-1/3"}>
                    <div className={"text-3xl font-bold  "}>Lets work together !</div>
                     <div className={"text-justify mt-3"}>
-                        I'm available to discuss your project needs. Feel free to reach out via:
+                        I m available to discuss your project needs. Feel free to reach out via:
                     </div>
                     <div className={"flex flex-row justify-around mt-2"}>
                         <Link href={"/"}>

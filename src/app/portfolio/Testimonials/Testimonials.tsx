@@ -37,7 +37,7 @@ function Testimonials() {
                                 alt={testimonial.name}
                                 className=" mx-auto mb-4"
                             />
-                            <p className="text-gray-600 italic">"{testimonial.quote}"</p>
+                            <p className="text-gray-600 italic">{testimonial.quote}</p>
                             <h3 className="font-bold text-lg mt-4">{testimonial.name}</h3>
                             <span className="text-gray-500 text-sm">{testimonial.role}</span>
                         </div>
