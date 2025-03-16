@@ -1,0 +1,12 @@
+.border-ft{
+ border-radius: 40px 0 40px 0;
+}
+.border-sec{
+ border-radius: 0 999px 0px 0;
+}
+.border-td{
+ border-radius: 99px 99px 0 0;
+}
+.border-lt{
+ border-radius: 20px 20px 20px 0px;
+ }

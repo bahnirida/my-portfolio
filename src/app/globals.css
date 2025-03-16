@@ -31,3 +31,38 @@
 /*    text-wrap: balance;*/
 /*  }*/
 /*}*/
+/* Ensure ToastContainer positions at the top-right corner */
+/* Customize Toast container */
+.Toastify__toast-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    z-index: 9999;  /* Ensures the toast is above all other content */
+}
+
+/* Customize Toast Style */
+.Toastify__toast {
+    background-color: white !important; /* White background for the toast */
+    color: black !important; /* Black text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    padding: 10px 20px; /* Padding for better aesthetics */
+    border-radius: 8px;  /* Rounded corners for the toast */
+}
+
+/* Customize Progress Bar */
+.Toastify__toast .Toastify__progress-bar {
+    position: absolute; /* Move progress bar to the bottom */
+    bottom: 0;
+    width: 100%; /* Ensure the progress bar spans the entire width */
+    height: 4px; /* Make the progress bar thinner */
+    background-color: #4caf50; /* Green progress bar color */
+    border-radius: 0 0 8px 8px;  /* Rounded bottom corners for the progress bar */
+}
+
+/* Adjust the padding and margin */
+.Toastify__toast .Toastify__toast-body {
+    padding-bottom: 10px; /* Ensure content doesn't overlap with progress bar */
+}
+
