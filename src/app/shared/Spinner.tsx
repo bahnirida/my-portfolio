@@ -1,5 +1,11 @@
+import React from 'react';
+
 export const Spinner = () => (
-    <div className="flex justify-center items-center">
-        <div className="w-16 h-16 border-4 border-t-4 border-blue-500 border-solid rounded-full animate-spin"></div>
+    <div className="flex items-center justify-center min-h-screen bg-cover bg-center">
+        <div className="relative w-20 h-20">
+            <div className="absolute top-0 left-0 w-20 h-20 border-4 border-gray-200 rounded-full"></div>
+            <div className="absolute top-0 left-0 w-20 h-20 border-4 border-transparent border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
     </div>
 );
+

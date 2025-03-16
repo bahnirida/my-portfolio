@@ -16,10 +16,10 @@ function AdminDashboard() {
 
     const menuItems = [
         { id: "dashboard", label: "Dashboard", icon: <FaTachometerAlt size={25} /> },
-        { id: "projects", label: "Manage Projects", icon: <FaProjectDiagram size={25} /> },
-        { id: "skills", label: "Manage Skills", icon: <FaTools size={25} /> },
-        { id: "testimonials", label: "Manage Testimonials", icon: <FaQuoteLeft size={25} /> },
-        { id: "contact", label: "Manage Contact Info", icon: <FaEnvelope size={25} /> },
+        { id: "projects", label: "Projects", icon: <FaProjectDiagram size={25} /> },
+        { id: "skills", label: "Skills", icon: <FaTools size={25} /> },
+        { id: "testimonials", label: "Testimonials", icon: <FaQuoteLeft size={25} /> },
+        { id: "contact", label: "Contact Info", icon: <FaEnvelope size={25} /> },
         { id: "logout", label: "Log out", icon: <FaDoorOpen size={25} /> },
     ];
 

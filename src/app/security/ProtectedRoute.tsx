@@ -4,6 +4,7 @@ import { useEffect, useState, ComponentType } from "react";
 import { useRouter } from "next/navigation"; // ✅ Use this instead of "next/router"
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "@/app/lib/firebase";
+import {Spinner} from "@/app/shared/Spinner";
 
 export default function ProtectedRoute<P extends object>(Component: ComponentType<P>) {
     return function WrappedComponent(props: P) {
@@ -21,7 +22,7 @@ export default function ProtectedRoute<P extends object>(Component: ComponentTyp
             return () => unsubscribe();
         }, [router]);
 
-        if (!user) return <p>Loading...</p>;
+        if (!user) return <Spinner/>;
 
         return <Component {...props} />;
     };

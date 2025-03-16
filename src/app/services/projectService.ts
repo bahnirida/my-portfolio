@@ -1,13 +1,89 @@
 import { db } from "@/app/lib/firebase";
-import {addDoc, collection, deleteDoc, doc, getDocs, updateDoc} from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    deleteDoc,
+    doc,
+    DocumentData,
+    QueryDocumentSnapshot,
+    QuerySnapshot,
+    getDocs,
+    limit,
+    orderBy,
+    updateDoc,
+    query as firebaseQuery,
+    startAfter, getCountFromServer, where // Import from firebase/firestore instead
+} from "firebase/firestore"; // All Firestore imports should come from here
 import {ProjectModel} from "@/app/model/project.model";
 
+
+const projectsCollection = collection(db, "projects");
 /**
  * Fetch all projects from Firestore.
  * Converts Firestore Timestamps to readable Date strings.
  */
+
+export const fetchPaginatedProjects = async (page: number, pageSize: number, lastVisible: any, searchKeyword: string) => {
+    try {
+        const projectsRef = collection(db, "projects");
+
+        // Fetch total document count to calculate total pages
+        const countQuery = searchKeyword
+            ? firebaseQuery(projectsRef, where("name", ">=", searchKeyword), where("name", "<=", searchKeyword + '\uf8ff'))
+            : projectsRef;
+
+        const countSnapshot = await getCountFromServer(countQuery);
+        const totalDocs = countSnapshot.data().count;
+        const totalPages = Math.ceil(totalDocs / pageSize);
+
+        // Create query with pagination and search
+        let projectQuery = firebaseQuery(
+            projectsRef,
+            orderBy("name"),
+            limit(pageSize)
+        );
+
+        if (searchKeyword) {
+            projectQuery = firebaseQuery(
+                projectsRef,
+                where("name", ">=", searchKeyword),
+                where("name", "<=", searchKeyword + '\uf8ff'),
+                orderBy("name"),
+                limit(pageSize)
+            );
+        }
+
+        if (lastVisible && page > 1) {
+            projectQuery = firebaseQuery(
+                projectsRef,
+                where("name", ">=", searchKeyword),
+                where("name", "<=", searchKeyword + '\uf8ff'),
+                orderBy("name"),
+                startAfter(lastVisible),
+                limit(pageSize)
+            );
+        }
+
+        const querySnapshot = await getDocs(projectQuery);
+        const projectList = querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+            startDate: doc.data().startDate?.toDate().toLocaleDateString() || "N/A",
+            endDate: doc.data().endDate?.toDate().toLocaleDateString() || "N/A",
+        }));
+
+        return {
+            projects: projectList,
+            lastVisible: querySnapshot.docs[querySnapshot.docs.length - 1] || null,
+            totalPages
+        };
+    } catch (error) {
+        console.error("Error fetching paginated projects:", error);
+        return { projects: [], lastVisible: null, totalPages: 1 };
+    }
+};
 export const fetchProjects = async () => {
-    const querySnapshot = await getDocs(collection(db, 'projects'));
+    const querySnapshot = await getDocs(projectsCollection);
     return querySnapshot.docs.map(doc => {
         const data = doc.data();
         return {
@@ -23,7 +99,7 @@ export const fetchProjects = async () => {
  */
 export const addProject = async (newProject: ProjectModel) => {
     try {
-        const docRef = await addDoc(collection(db, 'projects'), {
+        const docRef = await addDoc(projectsCollection, {
             ...newProject,
             startDate: new Date(newProject.startDate),
             endDate: new Date(newProject.endDate || 0),
@@ -35,13 +111,13 @@ export const addProject = async (newProject: ProjectModel) => {
     }
 };
 export const deleteProject = async (projectId: string) => {
-    const projectRef = doc(collection(db, "projects"), projectId);
+    const projectRef = doc(projectsCollection, projectId);
     await deleteDoc(projectRef);
 };
 export const updateProject = async (project: ProjectModel): Promise<void> => {
     if (!project.id) throw new Error("Project ID is required");
 
-    const projectRef = doc(collection(db, "projects"), project.id.toString());
+    const projectRef = doc(projectsCollection, project.id.toString());
 
     try {
         await updateDoc(projectRef, {

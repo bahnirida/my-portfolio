@@ -29,7 +29,7 @@ const Table = <T,>({ columns, data, loading }: TableProps<T>) => {
                 </thead>
                 <tbody>
                 {loading
-                    ? Array.from({ length: 5 }).map((_, index) => (
+                    ? Array.from({ length: 10 }).map((_, index) => (
                         <tr key={index} className="bg-gray-100 animate-pulse">
                             {columns.map((col, i) => (
                                 <td key={i} className="border border-gray-300 px-4 py-2">
