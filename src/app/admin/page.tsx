@@ -4,7 +4,7 @@ import ContactPage from "@/app/admin/contact/page";
 import TestimonialsPage from "@/app/admin/testimonials/page";
 import SkillsPage from "@/app/admin/skills/page";
 import ProjectsPage from "@/app/admin/projects/page";
-import {DashboardContent} from "@/app/admin/dashboard/page";
+import DashboardContent from "@/app/admin/dashboard/page";
 import {FaTachometerAlt, FaProjectDiagram, FaTools, FaQuoteLeft, FaEnvelope, FaDoorOpen} from "react-icons/fa";
 import { RiMenuFold3Line , RiMenuFold4Line } from "react-icons/ri";
 import ProtectedRoute from "@/app/security/ProtectedRoute";
