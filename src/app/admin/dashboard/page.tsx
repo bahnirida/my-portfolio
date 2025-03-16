@@ -1,4 +1,4 @@
-export function DashboardContent() {
+export default function DashboardContent() {
     return (
         <div>
             <h2 className="text-3xl font-bold">Welcome to the Admin Dashboard</h2>
