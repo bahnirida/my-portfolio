@@ -132,13 +132,6 @@ export default function ProjectsPage() {
         { key: "status", label: "Status" },
         { key: "startDate", label: "Start Date" },
         { key: "endDate", label: "Estimated End Date" },
-        { key: "client", label: "Client" },
-        { key: "manager", label: "Project Manager" },
-        { key: "team", label: "Team" },
-        { key: "budget", label: "Budget" },
-        { key: "technologies", label: "Technologies" },
-        { key: "difficulty", label: "Difficulty" },
-        { key: "priority", label: "Priority" },
         {
             key: "actions",
             label: "Actions",

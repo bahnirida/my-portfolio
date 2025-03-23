@@ -2,16 +2,14 @@ export interface ProjectModel {
     id?: string; // Optionnel pour les nouveaux projets
     name: string;
     description: string;
-    status: 'Pending' | 'In Progress' | 'Completed' | 'Archived'; // Enum possible
+    status: 'Pending' | 'In Progress' | 'Completed'; // Enum possible
     startDate: string; // Format YYYY-MM-DD
     endDate?: string; // Optionnel
     client: string;
-    manager: string;
-    team: string[];
     budget: number;
     technologies: string[];
-    difficulty: 'Easy' | 'Medium' | 'Hard'; // Enum possible
-    priority: 'Low' | 'Medium' | 'High';
+    thumbnail: string; // URL de l'image du projet
+    galleryImages: string[]; // Liste des URLs des images de la galerie
     links?: string[]; // Liens vers des ressources associées
     tasks?: string[]; // Liste des tâches
     notes?: string; // Notes supplémentaires

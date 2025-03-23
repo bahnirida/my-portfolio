@@ -9,6 +9,7 @@ import {FaTachometerAlt, FaProjectDiagram, FaTools, FaQuoteLeft, FaEnvelope, FaD
 import { RiMenuFold3Line , RiMenuFold4Line } from "react-icons/ri";
 import ProtectedRoute from "@/app/security/ProtectedRoute";
 import {logout} from "@/app/lib/auth.js";
+import {FaImage} from "react-icons/fa6";
 
 function AdminDashboard() {
     const [activeSection, setActiveSection] = useState("dashboard");
@@ -20,6 +21,7 @@ function AdminDashboard() {
         { id: "skills", label: "Skills", icon: <FaTools size={25} /> },
         { id: "testimonials", label: "Testimonials", icon: <FaQuoteLeft size={25} /> },
         { id: "contact", label: "Contact Info", icon: <FaEnvelope size={25} /> },
+        { id: "images", label: "Images", icon: <FaImage  size={25} /> },
         { id: "logout", label: "Log out", icon: <FaDoorOpen size={25} /> },
     ];
 
@@ -57,6 +59,7 @@ function AdminDashboard() {
                 {activeSection === "projects" && <ProjectsPage />}
                 {activeSection === "skills" && <SkillsPage />}
                 {activeSection === "testimonials" && <TestimonialsPage />}
+                {activeSection === "images" && <DashboardContent />}
                 {activeSection === "contact" && <ContactPage />}
             </div>
         </div>
