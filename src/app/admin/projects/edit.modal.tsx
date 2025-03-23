@@ -2,13 +2,27 @@ import React, { useState } from "react";
 import {ProjectModel} from "@/app/model/project.model";
 
 interface EditProjectFormProps {
-    project: ProjectModel;
+    project: ProjectModel | null;
     onSave: (updatedProject: ProjectModel) => void;
     onCancel: () => void;
 }
 
 const EditProjectForm: React.FC<EditProjectFormProps> = ({ project, onSave, onCancel }) => {
-    const [formData, setFormData] = useState<ProjectModel>({ ...project });
+    const [formData, setFormData] = useState<ProjectModel>({
+        name: "",
+        description: "",
+        status: "Pending",
+        startDate: "",
+        endDate: "",
+        client: "",
+        budget: 0,
+        technologies: [],
+        thumbnail: "", // New field for thumbnail
+        galleryImages: [], // New field for gallery images,
+        links: [], // Liens vers des ressources associées
+        tasks: [], // Liste des tâches
+        notes: ""
+    });
 
     const handleInputChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
